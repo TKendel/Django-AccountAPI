@@ -46,8 +46,8 @@ class CreateAccount(APIView):
 		#Validation
 		if Decimal(request.data["credit"]) > customer.balance:
 			raise SuspiciousOperation("Credit ammount is bigger then your current balance")
-		elif Decimal(request.data["credit"]) == Decimal('0.00'):
-			raise SuspiciousOperation("You cant open new account by depositing 0 money")
+		elif Decimal(request.data["credit"]) <= Decimal('0.00'):
+			raise SuspiciousOperation("You cant open new account by depositing negative or 0 money")
 		else:
 			customer.balance = customer.balance - Decimal(request.data["credit"])
 			serializer = AccountSerializer(data = request.data)
