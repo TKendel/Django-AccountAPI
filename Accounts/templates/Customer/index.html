@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Customers
+				</th>
+				<th>
+					Add Account
+				</th>
+				<th>
+					Details
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for customer in customers %}
+			<tr>
+				<td>
+					{{ customer.name }} {{customer.surname}}
+				</td>
+				<td>
+					<a class="btn btn-primary" href="{% url 'NewAccount' customer.id %}">Add new account</a>
+				</td>
+				<td>
+					<a class="btn btn-primary" href="{% url 'Detail' customer.id %}">Status</a>
+				</td>
+			</tr>
+			{% empty %}
+				<tr>
+					<td>
+						No customers yet.
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class=row>
+		<div class="col">
+			<h4>Hello {{Customer.name}} {{Customer.surname}}</h4>
+			<p>Your current balance is {{ Customer.balance }}$</p>
+			<br>
+
+			{% for AccountName in Accounts.values %}
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">{{ AccountName }}</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for account in Customer.accounts %}
+						{% if account.account_display == AccountName %}
+						<tr>
+							<th scope="row">{{account.created_at}}</th>
+							<td>
+								{{account.credit}}$
+							</td>
+						</tr>
+						{% endif %}
+					{% endfor %}
+					</tbody>
+				</table>
+			{% empty %}
+				<p>No transaction were yet made.</p>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block home %}
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col text-center">
+				<a class="btn btn-primary" href="{% url 'Customers' %}">Home</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

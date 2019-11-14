@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load rest_framework %}
+<div class="container">
+	<h2>Create a new account</h2>
+	<hr>
+</div>
+<div class="container">
+	<h4>Hello {{ customer.name }}</h4>
+	<p>Your current balane stands at {{ customer.balance }}$</p>
+	<form method="POST">
+		{% csrf_token %}
+		{% render_form AccForm %}
+		<div class="text-center">
+			<input class="btn btn-success" type="submit" value="Create">
+		</div>	
+	</form>
+</div>
+{% endblock %}
+
+{% block home %}
+	<hr>
+	<div class="container">
+		<div class="row">
+			<div class="col text-center">
+				<a class="btn btn-primary" href="{% url 'Customers' %}">Home</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
