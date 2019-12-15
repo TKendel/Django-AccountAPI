@@ -20,12 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1234nj@s6$e#q^%e#^j8ibe7qw^#b$a#@_nvyj0gn8$cxd!$hr'
+SECRET_KEY = 'h2$onj@s6$e#q^%e#^j8ibe7qw^#b$a#@_nvyj0gn8$cxd!$hr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tkendel.pythonanywhere.com"]
+ALLOWED_HOSTS = [
+    "tkendel.pythonanywhere.com",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -72,7 +75,6 @@ TEMPLATES = [
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
     'DATE_INPUT_FORMATS': [("%d-%m-%Y"),],
-
 }
 
 WSGI_APPLICATION = 'Api.wsgi.application'
@@ -106,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
